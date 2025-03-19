@@ -41,8 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const logoMarquee = document.getElementById('logoMarquee');
     const logoMarqueeContent = logoMarquee.querySelector('.logo-marquee-content');
-    const logoUrlSvg = "public/boltnew(whitetext).svg"; // Replace with your logo URL
-    const logoUrlJpg = "public/boltnew(whitetext).jpeg"; // Replace with your logo URL (jpg fallback)
+    const logoUrlSvg = "../public/boltnew(whitetext).svg"; // Replace with your logo URL
+    const logoUrlJpg = "../public/boltnew(whitetext).jpeg"; // Replace with your logo URL (jpg fallback)
     const numberOfLogos = 9; // Number of logos to display
 
     const logoImg = new Image();
