@@ -40,25 +40,22 @@ document.addEventListener('DOMContentLoaded', () => {
     darkModeToggleBottomLeft.addEventListener('click', toggleDarkMode);
     darkModeToggleTopRight.addEventListener('click', toggleDarkMode);
 
-    // Add event listeners to dark mode toggle buttons with passive touch event listeners
-    // so that the browser can handle the default touch behavior (scrolling) while still
-    // allowing our event listener to run.
     const darkModeToggles = document.querySelectorAll('#dark-mode-toggle-bottom-left, #dark-mode-toggle-top-right');
 
     darkModeToggles.forEach(toggle => {
-        toggle.addEventListener('touchstart', (event) => {
-            // Prevent default touch behavior (scrolling)
-            event.preventDefault();
-
-            // Add 'active' class to button to give visual effect of being pressed
-            toggle.classList.add('active');
-
-            // Remove 'active' class when touch is released
-            toggle.addEventListener('touchend', () => {
-                toggle.classList.remove('active');
-            }, { once: true });
-        }, { passive: true });
+        toggle.addEventListener('touchstart', handleDarkModeToggleTouch, { passive: false });
+        toggle.addEventListener('click', toggleDarkMode);
     });
+
+    function handleDarkModeToggleTouch(event) {
+        event.preventDefault();
+        this.classList.add('active');
+        toggleDarkMode();
+    
+        this.addEventListener('touchend', () => {
+            this.classList.remove('active');
+        }, { once: true });
+    }
 
     const logoMarquee = document.getElementById('logoMarquee');
     const logoMarqueeContent = logoMarquee.querySelector('.logo-marquee-content');
