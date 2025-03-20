@@ -515,7 +515,7 @@ footer a:hover {
 
 .radial-nav:hover {
     transform: scale(1.1) rotate(6deg);
-    box-shadow: 0 0 15px var(--glow-color);
+    /* box-shadow: 0 0 15px var(--glow-color); */
 }
 
 .radial-nav-items {
@@ -561,13 +561,13 @@ footer a:hover {
     background-color: transparent;
     /* color: var(--background-color); */
     /* border: 3px solid var(--primary-color); */
-    padding: 8px;
+    padding: 10px;
     cursor: pointer;
     z-index: 1000;
     transition: all 0.3s ease;
     /* remove default button styling */
-    /* background: none;
-    border: none; */
+    background: none;
+    border: none;
 }
 
 #dark-mode-toggle-bottom-left {
@@ -582,10 +582,11 @@ footer a:hover {
 
 #dark-mode-toggle-bottom-left:hover,
 #dark-mode-toggle-top-right:hover {
-    background-color: var(--glow-color); /* using glow color for hover effect as it the color signifies switching to dark theme, user knows what color to expect */
-    color: var(--background-color);
-    transform: scale(1.1);
-    box-shadow: 0 0 6px var(--glow-color);
+    /* using glow color for hover effect as it the color signifies switching to dark theme, user knows what color to expect */
+    /* background-color: var(--glow-color); */
+    /* color: var(--background-color); */
+    transform: scale(1.1) rotate(6deg);
+    /* box-shadow: 0 0 6px var(--glow-color); */
 }
 
 body.dark-mode {
