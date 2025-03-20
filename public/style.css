@@ -502,7 +502,7 @@ footer a:hover {
     left: 10px;
     width: 38px;
     height: 37px;
-    background-color: var(--primary-color);
+    background-color: transparent;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -510,7 +510,7 @@ footer a:hover {
     cursor: pointer;
     z-index: 1000;
     transition: all 0.3s ease;
-    box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.1), inset 2px 2px 5px rgba(255, 255, 255, 0.1), 0 0 3px var(--glow-color);
+    /* box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.1), inset 2px 2px 5px rgba(255, 255, 255, 0.1), 0 0 3px var(--glow-color); */
 }
 
 .radial-nav:hover {
@@ -554,46 +554,35 @@ footer a:hover {
 .three-d-element:hover {
     transform: rotateY(10deg) rotateX(5deg) scale(1.05);
 }
-
+#dark-mode-toggle-top-right,
 #dark-mode-toggle-bottom-left {
     position: absolute;
-    bottom: 10px;
-    left: 10px;
     border-radius: 50%;
-    background-color: var(--primary-color);
-    color: var(--background-color);
-    border: none;
-    padding: 10px;
+    background-color: transparent;
+    /* color: var(--background-color); */
+    /* border: 3px solid var(--primary-color); */
+    padding: 8px;
     cursor: pointer;
     z-index: 1000;
     transition: all 0.3s ease;
-    box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.1), inset 2px 2px 5px rgba(255, 255, 255, 0.1), 0 0 3px var(--glow-color);
+    /* remove default button styling */
+    /* background: none;
+    border: none; */
 }
 
-#dark-mode-toggle-bottom-left:hover {
-    background-color: var(--primary-color);
-    color: var(--background-color);
-    transform: scale(1.1);
-    box-shadow: 0 0 6px var(--glow-color);
+#dark-mode-toggle-bottom-left {
+    bottom: 10px;
+    left: 10px;
 }
 
 #dark-mode-toggle-top-right {
-    position: absolute;
     top: 10px;
     right: 10px;
-    border-radius: 50%;
-    background-color: var(--primary-color);
-    color: var(--background-color);
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 1000;
-    transition: all 0.3s ease;
-    box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.1), inset 2px 2px 5px rgba(255, 255, 255, 0.1), 0 0 3px var(--glow-color);
 }
 
+#dark-mode-toggle-bottom-left:hover,
 #dark-mode-toggle-top-right:hover {
-    background-color: var(--primary-color);
+    background-color: var(--glow-color); /* using glow color for hover effect as it the color signifies switching to dark theme, user knows what color to expect */
     color: var(--background-color);
     transform: scale(1.1);
     box-shadow: 0 0 6px var(--glow-color);
