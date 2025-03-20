@@ -299,9 +299,12 @@ h2,
     #highlights h2,
     #sponsors h2,
     #judges h2,
-    #faq h2,
-    #event-title {
+    #faq h2 {
         font-size: 1.4rem;
+    }
+
+    .container header #event-title {
+        font-size: 2rem;
     }
     
     #event-title {
