@@ -589,6 +589,11 @@ footer a:hover {
     /* box-shadow: 0 0 6px var(--glow-color); */
 }
 
+#dark-mode-toggle-bottom-left.active,
+#dark-mode-toggle-top-right.active {
+    transform: scale(1.1) rotate(6deg);
+}
+
 body.dark-mode {
     --primary-color: #00FFFF;
     --secondary-color: #FF00FF;
