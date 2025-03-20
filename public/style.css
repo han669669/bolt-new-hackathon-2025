@@ -183,7 +183,13 @@ h2,
     opacity: 0.3;
 }
 
-.sponsors-grid, .judges-grid {
+.sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.judges-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
