@@ -1,20 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     const faqQuestions = document.querySelectorAll('.faq-question');
     faqQuestions.forEach(question => {
-        question.addEventListener('click', (event) => { // Add event parameter
-            event.preventDefault(); // Prevent default behavior (if any)
-            event.stopPropagation(); // Stop event propagation
+        const answer = question.nextElementSibling;
+        answer.style.display = 'none'; // Set initial state
+        question.addEventListener('click', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
             const answer = question.nextElementSibling;
-            if (!answer.style.display || answer.style.display === 'none') {
-                answer.style.display = 'block';
-            } else {
-                answer.style.display = 'none';
-            }
+            answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
         });
     });
 
     const radialNav = document.querySelector('.radial-nav');
     const radialNavItems = document.querySelector('.radial-nav-items');
+    radialNavItems.style.display = 'none'; // Set initial state
 
     radialNav.addEventListener('click', () => {
         radialNavItems.style.display = radialNavItems.style.display === 'none' ? 'flex' : 'none';
@@ -30,10 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const darkModeToggleTopRight = document.getElementById('dark-mode-toggle-top-right');
     let isDarkMode = false;
     let lastScrollPosition = 0;
+    let darkModeActivatedBySection = false;
 
     const toggleDarkMode = () => {
         document.body.classList.toggle('dark-mode');
         isDarkMode = !isDarkMode;
+        darkModeActivatedBySection = false;
     };
 
     darkModeToggleBottomLeft.addEventListener('click', toggleDarkMode);
@@ -41,9 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const logoMarquee = document.getElementById('logoMarquee');
     const logoMarqueeContent = logoMarquee.querySelector('.logo-marquee-content');
-    const logoUrlSvg = "../public/boltnew(whitetext).svg"; // Replace with your logo URL
-    const logoUrlJpg = "../public/boltnew(whitetext).jpeg"; // Replace with your logo URL (jpg fallback)
-    const numberOfLogos = 9; // Number of logos to display
+    const logoUrlSvg = "../public/boltnew(whitetext).svg";
+    const logoUrlJpg = "../public/boltnew(whitetext).jpeg";
+    const numberOfLogos = 9;
 
     const logoImg = new Image();
     logoImg.src = logoUrlSvg;
@@ -67,19 +68,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const marqueeHeight = logoMarquee.offsetHeight;
 
+    const highlightsSection = document.getElementById('highlights');
+    let highlightsInView = false;
+
     window.addEventListener('scroll', () => {
         const currentScrollPosition = window.scrollY;
         const pageHeight = document.documentElement.scrollHeight;
         const viewportHeight = window.innerHeight;
         const scrollThreshold = (pageHeight - viewportHeight) / 2;
 
-        if (currentScrollPosition > scrollThreshold && !isDarkMode && currentScrollPosition > lastScrollPosition) {
-            document.body.classList.add('dark-mode');
-            isDarkMode = true;
-        } else if (currentScrollPosition < scrollThreshold && isDarkMode && currentScrollPosition < lastScrollPosition) {
-            document.body.classList.remove('dark-mode');
-            isDarkMode = false;
+        const highlightsOffsetTop = highlightsSection.offsetTop;
+        const highlightsHeight = highlightsSection.offsetHeight;
+
+        // Check if highlights section is in viewport
+        if (currentScrollPosition > highlightsOffsetTop - viewportHeight &&
+            currentScrollPosition < highlightsOffsetTop + highlightsHeight) {
+            if (!highlightsInView) {
+                // Highlights section is now in view
+                highlightsInView = true;
+                if (!isDarkMode) {
+                    toggleDarkMode();
+                    darkModeActivatedBySection = true;
+                }
+            }
+        } else {
+            if (highlightsInView) {
+                // Highlights section is no longer in view
+                highlightsInView = false;
+                if (darkModeActivatedBySection) {
+                    toggleDarkMode();
+                    darkModeActivatedBySection = false;
+                }
+            }
         }
+
+        // Original scroll-based dark mode toggle
+        if (currentScrollPosition > scrollThreshold && !isDarkMode && currentScrollPosition > lastScrollPosition) {
+            toggleDarkMode();
+        } else if (currentScrollPosition < scrollThreshold && isDarkMode && currentScrollPosition < lastScrollPosition) {
+            toggleDarkMode();
+        }
+
         lastScrollPosition = currentScrollPosition;
     });
 });

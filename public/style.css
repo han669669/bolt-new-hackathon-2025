@@ -27,19 +27,18 @@ body {
 
 .container {
     max-width: 800px;
-    /* width: 95%; */
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 20px;
     background-color: rgba(0, 0, 0, 0.8);
     border: 4px solid var(--primary-color);
     padding: 20px;
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
     position: relative;
     overflow: hidden;
     border-radius: 30px;
     box-shadow: 0 0 20px var(--glow-color);
-    
+    width: 95%;
+    box-sizing: border-box;
 }
 
 hr {
@@ -48,7 +47,6 @@ hr {
     height: 3px;
     border-radius: 2px;
     margin: 1em 0;
-    /* box-shadow: 0 0 1px var(--glow-color); */
 }
 
 h1, h2 {
@@ -98,20 +96,15 @@ h2,
     max-width: 150px;
     text-shadow: 1px 1px 2px var(--primary-color);
     border-radius: 30px;
-    box-shadow:
-        0 0 6px
-        var(--primary-color);
+    box-shadow: 0 0 6px var(--primary-color);
 }
-
 
 .retro-button:hover {
     background-color: var(--primary-color);
     color: var(--background-color);
     border-style: inset;
     transform: scale(1.05);
-    box-shadow:
-    0 0 6px
-    var(--primary-color);
+    box-shadow: 0 0 6px var(--primary-color);
 }
 
 .retro-button::before {
@@ -143,8 +136,6 @@ h2,
     color: #ffffff;
     border: 2px solid var(--primary-color);
     padding: 20px;
-    /* margin: 10px; */
-    /* width: 180px; */
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -214,13 +205,13 @@ h2,
 
 .sponsor-logo img {
     margin-top: 20px;
-    max-width: 90px; /* Adjust max-width */
-    max-height: 50px; /* Adjust max-height */
+    max-width: 90px;
+    max-height: 50px;
 }
 
 .sponsor-logo p {
     font-weight: bold;
-    font-size: 0.8rem; /* Increase font size */
+    font-size: 0.8rem;
 }
 
 .sponsor-logo:hover, .judge-card:hover {
@@ -235,35 +226,35 @@ h2,
 }
 
 .judge-card {
-    text-decoration: none; /* Remove underline */
-    color: var(--text-color); /* Inherit text color */
-    padding: 10px; /* Add padding */
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 10px;
     padding-top: 30px;
-    overflow: hidden; /* Prevent content from being cut off */
+    overflow: hidden;
 }
 
 .judge-card h4 {
-    font-size: 1rem; /* Adjust font size */
-    margin-bottom: 0.2rem; /* Adjust spacing */
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
 }
 
 .judge-card p {
-    font-size: 0.58rem; /* Adjust font size */
-    color: var(--text-color); /* Set bio color */
-    margin-top: 20px; /* Remove default margin */
+    font-size: 0.58rem;
+    color: var(--text-color);
+    margin-top: 20px;
 }
 
 .judge-card:hover {
     transform: scale(1.05);
     box-shadow: 0 0 10px var(--glow-color);
-    color: var(--secondary-color); /* Change text color on hover */
+    color: var(--secondary-color);
 }
 
 .judge-card:hover h4 {
-    text-decoration: underline; /* Add underline on hover */
+    text-decoration: underline;
 }
 
-.judge-card img:hover {
+.judge-card:hover img {
     transform: scale(1.1);
 }
 
@@ -276,15 +267,33 @@ h2,
     margin-left: 5px;
 }
 
-/* Media Queries for Responsiveness */
 @media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+        margin: 10px auto;
+    }
+
     .highlights {
-        grid-template-columns: repeat(1, 1fr); /* Stack highlights on mobile */
+        grid-template-columns: 1fr;
     }
 
     .sponsors-grid,
     .judges-grid {
-        grid-template-columns: repeat(2, 1fr); /* Two columns on mobile */
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    #hero-illustration,
+    #highlights-illustration,
+    #faq-illustration {
+        width: calc(100% - 30px);
+        max-width: 100%;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        margin: 20px auto;
+        box-sizing: border-box;
     }
 
     #highlights h2,
@@ -292,15 +301,16 @@ h2,
     #judges h2,
     #faq h2,
     #event-title {
-        font-size: 1.4rem; /* Smaller heading font size on mobile */
+        font-size: 1.4rem;
     }
     
     #event-title {
         margin-top: 3rem;
     }
 
-    .faq-question {
-        font-size: 0.7rem;
+    .judge-card {
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .judge-card h4 {
@@ -320,20 +330,41 @@ h2,
         width: 46.38px;
         height: 46px;
     }
+
+    .sponsor-logo {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .faq-question {
+        font-size: 0.7rem;
+    }
+
+    .container .brutalist-element {
+        font-size: 0.6rem;
+    }
 }
 
-/* Media Queries for Tablets */
 @media (max-width: 1024px) {
     .sponsors-grid,
     .judges-grid {
-        grid-template-columns: repeat(3, 1fr); /* Three columns on tablets */
+        grid-template-columns: repeat(2, 1fr);
     }
 
     #highlights h2,
     #sponsors h2,
     #judges h2,
     #faq h2 {
-        font-size: 1.6rem; /* Smaller heading font size on tablets */
+        font-size: 1.6rem;
+    }
+
+    #hero-illustration,
+    #highlights-illustration,
+    #faq-illustration {
+        width: calc(100% - 30px);
+        max-width: 400px;
+        margin: 20px auto;
+        box-sizing: border-box;
     }
 }
 
@@ -435,7 +466,7 @@ footer a:hover {
     background-color: #000;
     overflow: hidden;
     white-space: nowrap;
-    height: 70px; /* Make marquee larger */
+    height: 70px;
     margin-top: 30px;
 }
 
@@ -451,13 +482,12 @@ footer a:hover {
 }
 
 .logo-marquee img {
-    height: 60px; /* Adjust logo height for larger marquee */
+    height: 60px;
     width: auto;
-    margin: 0 50px; /* Adjust spacing for larger marquee */
+    margin: 0 50px;
     vertical-align: middle;
 }
 
-/* Radial Navigation */
 .radial-nav {
     position: absolute;
     top: 10px;
@@ -473,14 +503,6 @@ footer a:hover {
     z-index: 1000;
     transition: all 0.3s ease;
     box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.1), inset 2px 2px 5px rgba(255, 255, 255, 0.1), 0 0 3px var(--glow-color);
-}
-
-.radial-nav::before {
-    /* content: "\2630"; Unicode for a different hamburger icon */
-    font-size: 1rem;
-    position: relative;
-    top: -2px;
-    color: var(--text-color);
 }
 
 .radial-nav:hover {
@@ -515,7 +537,6 @@ footer a:hover {
     text-shadow: 0 0 5px var(--glow-color);
 }
 
-/* 3D Elements */
 .three-d-element {
     perspective: 1000px;
     transform-style: preserve-3d;
@@ -526,7 +547,6 @@ footer a:hover {
     transform: rotateY(10deg) rotateX(5deg) scale(1.05);
 }
 
-/* Dark Mode Toggle */
 #dark-mode-toggle-bottom-left {
     position: absolute;
     bottom: 10px;
@@ -571,7 +591,6 @@ footer a:hover {
     box-shadow: 0 0 6px var(--glow-color);
 }
 
-/* Dark Mode Styles */
 body.dark-mode {
     --primary-color: #00FFFF;
     --secondary-color: #FF00FF;
@@ -580,7 +599,6 @@ body.dark-mode {
     --glow-color: #00FF00;
 }
 
-/* Macro Animations */
 @keyframes sectionTransition {
     0% { opacity: 0; transform: translateY(50px); }
     100% { opacity: 1; transform: translateY(0); }
@@ -590,7 +608,6 @@ section {
     animation: sectionTransition 0.5s ease-out;
 }
 
-/* Brutalist Elements */
 .brutalist-element {
     font-family: monospace;
     border: 5px solid var(--text-color);
@@ -601,7 +618,6 @@ section {
     line-height: 1.2;
     white-space: pre-wrap;
     transition: all 0.3s ease;
-    /* border-radius: 10px; */
 }
 
 .brutalist-element:hover {
@@ -609,13 +625,13 @@ section {
     box-shadow: 0 0 10px var(--glow-color);
 }
 
-/* Custom Illustrations */
 .pixelated-illustration {
     image-rendering: pixelated;
 }
 
 #hero-illustration {
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     height: 200px;
     background-image: url('../public/pixel_art_hero.jpg');
     background-size: cover;
@@ -623,6 +639,7 @@ section {
     border: 4px solid var(--primary-color);
     transition: all 0.3s ease;
     border-radius: 10px;
+    box-sizing: border-box;
 }
 
 #hero-illustration:hover {
@@ -631,7 +648,8 @@ section {
 }
 
 #highlights-illustration {
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     height: 235px;
     background-image: url('../public/pixel_art_sponsors.jpg');
     background-size: cover;
@@ -639,6 +657,7 @@ section {
     border: 4px solid var(--primary-color);
     transition: all 0.3s ease;
     border-radius: 10px;
+    box-sizing: border-box;
 }
 
 #highlights-illustration:hover {
@@ -647,7 +666,8 @@ section {
 }
 
 #faq-illustration {
-    width: 396px;
+    width: 100%;
+    max-width: 396px;
     height: 265px;
     background-image: url('../public/levelup.jpeg');
     background-size: cover;
@@ -655,6 +675,7 @@ section {
     border: 4px solid var(--primary-color);
     transition: all 0.3s ease;
     border-radius: 10px;
+    box-sizing: border-box;
 }
 
 #faq-illustration:hover {
@@ -662,38 +683,41 @@ section {
     box-shadow: 0 0 15px var(--glow-color);
 }
 
-/* New styles for Hero Section Text */
 #hero {
     text-align: center;
 }
+
 #hero h2 {
-    font-size: 1.5rem; /* Larger font size */
-    font-weight: bold;  /* Bold font weight */
-    color: #ffffff;      /* White text color */
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.7); /* More pronounced shadow */
-    margin: 0 auto; /* Reduced margin */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    margin: 0 auto;
     -webkit-text-stroke: 1px var(--primary-color);
 }
+
 #hero h4 {
     margin-top: -2.5rem;
-    font-size: 1.5rem; /* Increased font size */
+    font-size: 1.5rem;
     color: #ffffff;
     text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
     margin-bottom: 1rem;
     font-weight: bold;
 }
-#hero h3{
+
+#hero h3 {
     margin-top: 0px;
-    font-size: 8rem; /* Larger font size */
-    font-weight: bold;  /* Bold font weight */
-    color: #ffffff;      /* White text color */
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.7); /* More pronounced shadow */
-    margin-bottom: 0.5rem; /* Reduced margin */
+    font-size: 8rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    margin-bottom: 0.5rem;
     -webkit-text-stroke: 1px var(--glow-color);
 }
+
 #hero p {
-    font-size: 2.2rem; /* Slightly smaller size */
-    font-style: italic; /* Italic font style */
+    font-size: 2.2rem;
+    font-style: italic;
     font-weight: bold;
     text-decoration: green wavy underline;
 }
