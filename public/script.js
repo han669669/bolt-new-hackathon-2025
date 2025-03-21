@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    const eventTitle = document.getElementById('event-title');
+    eventTitle.classList.add('blink');
+
     const radialNav = document.querySelector('.radial-nav');
     const radialNavItems = document.querySelector('.radial-nav-items');
     radialNavItems.style.display = 'none'; // Set initial state
