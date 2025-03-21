@@ -12,7 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const eventTitle = document.getElementById('event-title');
-    eventTitle.classList.add('blink');
+    setTimeout(() => {
+        eventTitle.classList.add('blink');
+    }, 50);
 
     const radialNav = document.querySelector('.radial-nav');
     const radialNavItems = document.querySelector('.radial-nav-items');
