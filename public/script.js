@@ -12,17 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const eventTitle = document.getElementById('event-title');
-    setTimeout(() => {
-        eventTitle.classList.add('blink');
-    }, 50);
+    let isVisible = true;
 
-    eventTitle.addEventListener('touchstart', () => {}); // Empty touchstart event listener
-
-    requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-            // Force a re-render
-        });
-    });
+    setInterval(() => {
+        isVisible = !isVisible;
+        eventTitle.style.opacity = isVisible ? 1 : 0;
+    }, 750); // Match the CSS animation duration (1.5s / 2)
 
     const radialNav = document.querySelector('.radial-nav');
     const radialNavItems = document.querySelector('.radial-nav-items');

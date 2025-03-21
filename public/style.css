@@ -68,15 +68,6 @@ h2,
     font-family: 'Press Start 2P', monospace;
 }
 
-.blink {
-    animation: blinker 1.5s linear infinite;
-    font-size: 5rem;
-    animation-play-state: running;
-}
-
-@keyframes blinker {
-    50% { opacity: 0; }
-}
 
 .retro-button {
     background-color: var(--primary-color);
