@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
         eventTitle.classList.add('blink');
     }, 50);
 
+    eventTitle.addEventListener('touchstart', () => {}); // Empty touchstart event listener
+
     const radialNav = document.querySelector('.radial-nav');
     const radialNavItems = document.querySelector('.radial-nav-items');
     radialNavItems.style.display = 'none'; // Set initial state
