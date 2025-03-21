@@ -18,6 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     eventTitle.addEventListener('touchstart', () => {}); // Empty touchstart event listener
 
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            // Force a re-render
+        });
+    });
+
     const radialNav = document.querySelector('.radial-nav');
     const radialNavItems = document.querySelector('.radial-nav-items');
     radialNavItems.style.display = 'none'; // Set initial state
