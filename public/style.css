@@ -71,6 +71,7 @@ h2,
 .blink {
     animation: blinker 1.5s linear infinite;
     font-size: 5rem;
+    animation-play-state: running;
 }
 
 @keyframes blinker {
