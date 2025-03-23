@@ -750,3 +750,31 @@ section {
     font-weight: bold;
     text-decoration: green wavy underline;
 }
+
+.radial-nav-items a[href="#event-title"] {
+    top: 20%;
+    left: 50%;
+}
+
+.radial-nav-items a[href="#judges"] {
+    top: 50%;
+    right: 20%;
+}
+
+.radial-nav-items a[href="#sponsors"] {
+    bottom: 20%;
+    right: 50%;
+}
+
+.radial-nav-items a[href="#faq"] {
+    bottom: 50%;
+    left: 20%;
+}
+
+#hero .event-tagline {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    -webkit-text-stroke: 1px var(--primary-color);
+}
